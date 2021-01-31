@@ -106,25 +106,18 @@ texture = ExtResource( 11 )
 region_enabled = true
 region_rect = Rect2( 1150, 0, 350, 360 )
 
-[node name="Sprite3" type="Sprite" parent="texture"]
-position = Vector2( 240, 197 )
-scale = Vector2( 0.088492, 0.362485 )
-texture = ExtResource( 11 )
-region_enabled = true
-region_rect = Rect2( 20, 410, 720, 210 )
-
 [node name="Label" type="Label" parent="."]
 anchor_left = 0.361
 anchor_top = 0.207
 anchor_right = 0.361
 anchor_bottom = 0.207
-margin_left = 408.0
+margin_left = 387.024
 margin_top = 191.0
-margin_right = 466.0
+margin_right = 553.024
 margin_bottom = 277.0
 custom_fonts/font = ExtResource( 10 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
-text = "E"
+text = "E or Down"
 align = 1
 valign = 1
 __meta__ = {

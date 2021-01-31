@@ -46,17 +46,17 @@ __meta__ = {
 motion_scale = Vector2( 0.2, 0.2 )
 
 [node name="Sprite" type="Sprite" parent="ParallaxBackground/ParallaxLayer3"]
-position = Vector2( 599.3, 101.95 )
+position = Vector2( 607.309, -20.8552 )
 scale = Vector2( 0.3, 0.3 )
 texture = ExtResource( 8 )
 
 [node name="Sprite2" type="Sprite" parent="ParallaxBackground/ParallaxLayer3"]
-position = Vector2( 1072, 63 )
+position = Vector2( 853.086, -70.484 )
 scale = Vector2( 0.3, 0.3 )
 texture = ExtResource( 8 )
 
 [node name="Sprite3" type="Sprite" parent="ParallaxBackground/ParallaxLayer3"]
-position = Vector2( 3182, 80 )
+position = Vector2( 432.23, -122.896 )
 scale = Vector2( 0.3, 0.3 )
 texture = ExtResource( 8 )
 flip_h = true
@@ -113,8 +113,8 @@ scale = Vector2( 0.5, 1 )
 texture = ExtResource( 11 )
 
 [node name="Sprite8" type="Sprite" parent="ParallaxBackground/ParallaxLayer"]
-position = Vector2( 2450, 283 )
-scale = Vector2( 0.712928, 0.738191 )
+position = Vector2( 2118.96, 273.656 )
+scale = Vector2( 0.564049, 0.649649 )
 texture = ExtResource( 9 )
 flip_h = true
 
@@ -142,8 +142,13 @@ texture = ExtResource( 9 )
 
 [node name="Sprite2" type="Sprite" parent="ParallaxBackground/ParallaxLayer4"]
 modulate = Color( 0.588235, 0.878431, 0.698039, 1 )
-position = Vector2( 2699, 122 )
-scale = Vector2( 0.827946, 0.846482 )
+position = Vector2( 2669.63, 214.104 )
+scale = Vector2( 0.645231, 0.666715 )
+texture = ExtResource( 9 )
+
+[node name="Sprite3" type="Sprite" parent="ParallaxBackground/ParallaxLayer4"]
+position = Vector2( 2206.44, 298.199 )
+scale = Vector2( 0.594476, 0.583539 )
 texture = ExtResource( 9 )
 
 [node name="env" type="Node2D" parent="."]
@@ -453,6 +458,6 @@ shape = SubResource( 3 )
 [connection signal="button_down" from="env/TextureRect2/Button" to="." method="_on_Button_button_down"]
 [connection signal="viewport_entered" from="TextureRect4/VisibilityNotifier2D" to="Player" method="_on_VisibilityNotifier2D_viewport_entered"]
 [connection signal="picked_up_sword" from="Sword" to="Player" method="_on_Sword_picked_up_sword"]
-[connection signal="lost_sword" from="Player" to="." method="_on_Player_lost_sword"]
 [connection signal="lost_sword" from="Player" to="Sword" method="_on_Player_lost_sword"]
+[connection signal="lost_sword" from="Player" to="." method="_on_Player_lost_sword"]
 [connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]

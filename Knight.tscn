@@ -1358,8 +1358,8 @@ tracks/25/keys = {
 "values": [ -11.4479, -11.4479 ]
 }
 
-[sub_resource type="RectangleShape2D" id=8]
-extents = Vector2( 64, 94 )
+[sub_resource type="CircleShape2D" id=8]
+radius = 94.0661
 
 [node name="Knight" type="KinematicBody2D"]
 script = ExtResource( 2 )
@@ -1381,6 +1381,7 @@ anims/jump = SubResource( 7 )
 
 [node name="body" type="Sprite" parent="char"]
 position = Vector2( -15, -12 )
+rotation = 0.180006
 texture = ExtResource( 5 )
 __meta__ = {
 "_edit_bone_": true,
@@ -1389,7 +1390,7 @@ __meta__ = {
 
 [node name="Shoulder" type="Sprite" parent="char/body"]
 position = Vector2( 45, -13 )
-rotation = -0.0867476
+rotation = -1.39118
 texture = ExtResource( 9 )
 offset = Vector2( -42.2993, 13.2572 )
 __meta__ = {
@@ -1400,7 +1401,7 @@ __meta__ = {
 [node name="arm" type="Sprite" parent="char/body/Shoulder"]
 show_behind_parent = true
 position = Vector2( 8.25315, 10.9236 )
-rotation = -2.33272
+rotation = -1.6019
 texture = ExtResource( 6 )
 offset = Vector2( 9.21666, 6.35783 )
 __meta__ = {
@@ -1409,7 +1410,7 @@ __meta__ = {
 
 [node name="hand" type="Sprite" parent="char/body/Shoulder/arm"]
 position = Vector2( -12.4874, 19.3394 )
-rotation = -0.034399
+rotation = -0.129387
 texture = ExtResource( 8 )
 offset = Vector2( -55.9691, -13.4628 )
 __meta__ = {
@@ -1419,7 +1420,7 @@ __meta__ = {
 [node name="sword" type="Sprite" parent="char/body/Shoulder/arm/hand"]
 show_behind_parent = true
 position = Vector2( 8.8326, 26.8367 )
-rotation = 1.59796
+rotation = 1.50232
 texture = ExtResource( 12 )
 offset = Vector2( 0.460043, -45.2016 )
 __meta__ = {
@@ -1428,6 +1429,7 @@ __meta__ = {
 
 [node name="Head" type="Sprite" parent="char/body"]
 position = Vector2( 7, -4 )
+rotation = -0.181647
 texture = ExtResource( 10 )
 __meta__ = {
 "_edit_bone_": true
@@ -1435,7 +1437,7 @@ __meta__ = {
 
 [node name="Shoulder-f" type="Sprite" parent="char/body"]
 position = Vector2( 5, -5 )
-rotation = 0.126744
+rotation = 0.0860182
 texture = ExtResource( 4 )
 offset = Vector2( -5, 5 )
 __meta__ = {
@@ -1446,7 +1448,7 @@ __meta__ = {
 [node name="Arm-f" type="Sprite" parent="char/body/Shoulder-f"]
 show_behind_parent = true
 position = Vector2( -13, 5 )
-rotation = 0.0655682
+rotation = 0.704933
 texture = ExtResource( 6 )
 offset = Vector2( 9, 6 )
 __meta__ = {
@@ -1455,7 +1457,7 @@ __meta__ = {
 
 [node name="hand-f" type="Sprite" parent="char/body/Shoulder-f/Arm-f"]
 position = Vector2( -12, 22 )
-rotation = -0.199804
+rotation = -0.799012
 texture = ExtResource( 13 )
 offset = Vector2( 21, -18 )
 __meta__ = {
@@ -1465,7 +1467,7 @@ __meta__ = {
 [node name="Leg" type="Sprite" parent="char/body"]
 show_behind_parent = true
 position = Vector2( 30, 20 )
-rotation = -0.343397
+rotation = -1.09583
 texture = ExtResource( 11 )
 offset = Vector2( -13, -22 )
 __meta__ = {
@@ -1476,7 +1478,7 @@ __meta__ = {
 [node name="Boot" type="Sprite" parent="char/body/Leg"]
 show_behind_parent = true
 position = Vector2( -6, 23 )
-rotation = 0.318285
+rotation = 1.10999
 texture = ExtResource( 7 )
 offset = Vector2( -9, -41 )
 __meta__ = {
@@ -1486,6 +1488,7 @@ __meta__ = {
 [node name="Leg-f" type="Sprite" parent="char/body"]
 show_behind_parent = true
 position = Vector2( 13, 22 )
+rotation = -0.971442
 texture = ExtResource( 11 )
 offset = Vector2( -13, -22 )
 __meta__ = {
@@ -1496,6 +1499,7 @@ __meta__ = {
 [node name="Boot-f" type="Sprite" parent="char/body/Leg-f"]
 show_behind_parent = true
 position = Vector2( -6, 23 )
+rotation = 0.937053
 texture = ExtResource( 7 )
 offset = Vector2( -9, -41 )
 __meta__ = {
@@ -1507,7 +1511,7 @@ collision_layer = 1024
 collision_mask = 1024
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AttackBox"]
-position = Vector2( 88, -19 )
+position = Vector2( 78.261, -13.7559 )
 shape = SubResource( 8 )
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]

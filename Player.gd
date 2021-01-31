@@ -36,7 +36,7 @@ func _ready():
 
 func _physics_process(delta):
 	
-	if Input.is_action_just_pressed("y"):
+	if Input.is_action_just_pressed("y") or Input.is_action_just_pressed("down"):
 		var ray = get_node_or_null('./RayCast2D')
 		if ray != null:
 			if ray.on_tile:
@@ -93,7 +93,7 @@ func _physics_process(delta):
 		if is_on_floor():
 			vel.x = lerp(vel.x, 0, 0.8)
 	
-	if Input.is_action_just_pressed("a"):
+	if Input.is_action_just_pressed("a") or Input.is_action_just_pressed("up"):
 		jumpBuffer = MAX_JUMP_BUFFER
 		if doubleJumpReady:
 			vel.y = JUMPFORCE
@@ -105,7 +105,7 @@ func _physics_process(delta):
 	else:
 		jumpBuffer -= 1
 			
-	if Input.is_action_pressed("a") and varjump:
+	if Input.is_action_pressed("a") and varjump or Input.is_action_pressed("up") and varjump:
 		vel.y = vel.y - GRAVITY * delta
 		
 	if is_on_floor() and jumpBuffer > 0:
