@@ -1,0 +1,144 @@
+[gd_scene load_steps=41 format=2]
+
+[ext_resource path="res://dragon1/idlehorde0007.png" type="Texture" id=1]
+[ext_resource path="res://dragon1/idlehorde0013.png" type="Texture" id=2]
+[ext_resource path="res://dragon1/idlehorde0003.png" type="Texture" id=3]
+[ext_resource path="res://dragon1/idlehorde0015.png" type="Texture" id=4]
+[ext_resource path="res://dragon1/idlehorde0011.png" type="Texture" id=5]
+[ext_resource path="res://dragon1/idlehorde0001.png" type="Texture" id=6]
+[ext_resource path="res://dragon1/idlehorde0009.png" type="Texture" id=7]
+[ext_resource path="res://dragon1/idlehorde0005.png" type="Texture" id=8]
+[ext_resource path="res://Audio/SwordBounce.wav" type="AudioStream" id=9]
+[ext_resource path="res://dragon1/gust/gusthorde0003.png" type="Texture" id=10]
+[ext_resource path="res://dragon1/gust/gusthorde0015.png" type="Texture" id=11]
+[ext_resource path="res://dragon1/gust/gusthorde0023.png" type="Texture" id=12]
+[ext_resource path="res://dragon1/gust/gusthorde0031.png" type="Texture" id=13]
+[ext_resource path="res://dragon1/gust/gusthorde0021.png" type="Texture" id=14]
+[ext_resource path="res://dragon1/gust/gusthorde0033.png" type="Texture" id=15]
+[ext_resource path="res://dragon1/gust/gusthorde0025.png" type="Texture" id=16]
+[ext_resource path="res://dragon1/gust/gusthorde0011.png" type="Texture" id=17]
+[ext_resource path="res://Dragon1.gd" type="Script" id=18]
+[ext_resource path="res://dragon1/gust/gusthorde0013.png" type="Texture" id=19]
+[ext_resource path="res://dragon1/gust/gusthorde0017.png" type="Texture" id=20]
+[ext_resource path="res://dragon1/gust/gusthorde0001.png" type="Texture" id=21]
+[ext_resource path="res://dragon1/gust/gusthorde0027.png" type="Texture" id=22]
+[ext_resource path="res://dragon1/gust/gusthorde0005.png" type="Texture" id=23]
+[ext_resource path="res://dragon1/gust/gusthorde0007.png" type="Texture" id=24]
+[ext_resource path="res://dragon1/gust/gusthorde0009.png" type="Texture" id=25]
+[ext_resource path="res://dragon1/gust/gusthorde0019.png" type="Texture" id=26]
+[ext_resource path="res://dragon1/gust/gusthorde0029.png" type="Texture" id=27]
+[ext_resource path="res://dragon1/gust/gusthorde0036.png" type="Texture" id=28]
+[ext_resource path="res://dragon1/gust/gusthorde0037.png" type="Texture" id=29]
+[ext_resource path="res://dragon1/gust/gusthorde0038.png" type="Texture" id=30]
+[ext_resource path="res://dragon1/gust/gusthorde0039.png" type="Texture" id=31]
+[ext_resource path="res://dragon1/gust/gusthorde0040.png" type="Texture" id=32]
+[ext_resource path="res://dragon1/gust/gusthorde0035.png" type="Texture" id=33]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 6 ), ExtResource( 3 ), ExtResource( 8 ), ExtResource( 1 ), ExtResource( 7 ), ExtResource( 5 ), ExtResource( 2 ), ExtResource( 4 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 21 ), ExtResource( 10 ), ExtResource( 23 ), ExtResource( 24 ), ExtResource( 25 ), ExtResource( 17 ), ExtResource( 19 ), ExtResource( 11 ), ExtResource( 20 ), ExtResource( 26 ), ExtResource( 14 ), ExtResource( 12 ), ExtResource( 16 ), ExtResource( 22 ), ExtResource( 27 ), ExtResource( 13 ), ExtResource( 15 ), ExtResource( 33 ), ExtResource( 28 ), ExtResource( 29 ), ExtResource( 30 ), ExtResource( 31 ), ExtResource( 32 ) ],
+"loop": true,
+"name": "gust",
+"speed": 30.0
+} ]
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 90, 37 )
+
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 115, 73 )
+
+[sub_resource type="CapsuleShape2D" id=4]
+radius = 32.8936
+height = 168.0
+
+[sub_resource type="CapsuleShape2D" id=5]
+radius = 219.0
+height = 144.0
+
+[sub_resource type="Animation" id=6]
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("AnimatedSprite:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 0.188235, 0.188235, 0.694118 ), Color( 1, 0.188235, 0.188235, 0.388235 ) ]
+}
+
+[sub_resource type="Animation" id=7]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("AnimatedSprite:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ) ]
+}
+
+[node name="Dragon" type="KinematicBody2D"]
+collision_layer = 16
+collision_mask = 64
+script = ExtResource( 18 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+position = Vector2( -96, -202 )
+frames = SubResource( 1 )
+frame = 2
+playing = true
+offset = Vector2( 199, -3 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 20, -40 )
+shape = SubResource( 2 )
+
+[node name="claws" type="Area2D" parent="."]
+position = Vector2( 132, -45 )
+collision_layer = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="claws"]
+position = Vector2( -109, 2 )
+shape = SubResource( 3 )
+
+[node name="tail" type="Area2D" parent="."]
+position = Vector2( 132, -45 )
+collision_layer = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="tail"]
+position = Vector2( 131, -17 )
+rotation = -1.5292
+shape = SubResource( 4 )
+
+[node name="hurtbox" type="Area2D" parent="."]
+position = Vector2( -199, -253 )
+collision_layer = 1024
+collision_mask = 1024
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="hurtbox"]
+position = Vector2( 210, 44 )
+shape = SubResource( 5 )
+
+[node name="coloranim" type="AnimationPlayer" parent="."]
+anims/Blink = SubResource( 6 )
+anims/normal = SubResource( 7 )
+
+[node name="fx1" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 9 )
+[connection signal="body_entered" from="claws" to="." method="_on_Area2D_body_entered"]
+[connection signal="body_entered" from="tail" to="." method="_on_Area2D_body_entered"]
+[connection signal="area_entered" from="hurtbox" to="." method="_on_hurtbox_area_entered"]

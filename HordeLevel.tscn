@@ -1,0 +1,607 @@
+[gd_scene load_steps=14 format=2]
+
+[ext_resource path="res://Knight.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Gold.tscn" type="PackedScene" id=2]
+[ext_resource path="res://HordeLevel.gd" type="Script" id=3]
+[ext_resource path="res://sword.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Audio/Sword_Soundtrack_Angusti.wav" type="AudioStream" id=5]
+[ext_resource path="res://RayCast2D.gd" type="Script" id=6]
+[ext_resource path="res://Dragon1.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Art/cave2.png" type="Texture" id=8]
+[ext_resource path="res://Art/Cave1.png" type="Texture" id=9]
+[ext_resource path="res://Font-Quint.tres" type="DynamicFont" id=10]
+[ext_resource path="res://Art/keys.png" type="Texture" id=11]
+[ext_resource path="res://Art/scroll.png" type="Texture" id=12]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 1040, 840 )
+
+[node name="HordeLevel" type="Node2D"]
+script = ExtResource( 3 )
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2( 0.3, 0.3 )
+
+[node name="Sprite" type="Sprite" parent="ParallaxBackground/ParallaxLayer"]
+position = Vector2( 200, 80 )
+scale = Vector2( 0.8, 0.8 )
+texture = ExtResource( 8 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="env" type="Node2D" parent="."]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="env"]
+position = Vector2( -50, 390 )
+collision_layer = 8
+collision_mask = 5
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="env/StaticBody2D"]
+position = Vector2( 1090, 1410 )
+shape = SubResource( 1 )
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="env"]
+position = Vector2( -50, 390 )
+collision_layer = 2
+collision_mask = 21
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="env/StaticBody2D2"]
+position = Vector2( -990, -270 )
+shape = SubResource( 1 )
+
+[node name="StaticBody2D3" type="StaticBody2D" parent="env"]
+position = Vector2( -50, 390 )
+collision_layer = 2
+collision_mask = 21
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="env/StaticBody2D3"]
+position = Vector2( 3170, -270 )
+shape = SubResource( 1 )
+
+[node name="StaticBody2D4" type="StaticBody2D" parent="env"]
+position = Vector2( -50, 390 )
+collision_layer = 2
+collision_mask = 21
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="env/StaticBody2D4"]
+position = Vector2( 1090, -1710 )
+shape = SubResource( 1 )
+
+[node name="Background Music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 5 )
+volume_db = -9.029
+autoplay = true
+
+[node name="texture" type="TextureRect" parent="."]
+margin_left = 200.0
+margin_top = 50.0
+margin_right = 600.0
+margin_bottom = 385.0
+texture = ExtResource( 12 )
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="DIG" type="RichTextLabel" parent="texture"]
+margin_left = 142.0
+margin_top = 70.0
+margin_right = 235.0
+margin_bottom = 130.0
+custom_fonts/normal_font = ExtResource( 10 )
+custom_colors/default_color = Color( 1, 0.188235, 0.188235, 1 )
+text = "DIG!"
+scroll_active = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Sprite2" type="Sprite" parent="texture"]
+position = Vector2( 131, 189 )
+scale = Vector2( 0.271429, 0.267827 )
+texture = ExtResource( 11 )
+region_enabled = true
+region_rect = Rect2( 1150, 0, 350, 360 )
+
+[node name="Sprite3" type="Sprite" parent="texture"]
+position = Vector2( 240, 197 )
+scale = Vector2( 0.088492, 0.362485 )
+texture = ExtResource( 11 )
+region_enabled = true
+region_rect = Rect2( 20, 410, 720, 210 )
+
+[node name="Label" type="Label" parent="."]
+anchor_left = 0.361
+anchor_top = 0.207
+anchor_right = 0.361
+anchor_bottom = 0.207
+margin_left = 408.0
+margin_top = 191.0
+margin_right = 466.0
+margin_bottom = 277.0
+custom_fonts/font = ExtResource( 10 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "E"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="GoldGroup" type="Node2D" parent="."]
+
+[node name="Gold" parent="GoldGroup" instance=ExtResource( 2 )]
+position = Vector2( 40, 525 )
+
+[node name="Gold2" parent="GoldGroup" instance=ExtResource( 2 )]
+position = Vector2( 120, 525 )
+
+[node name="Gold7" parent="GoldGroup" instance=ExtResource( 2 )]
+position = Vector2( 520, 525 )
+
+[node name="Gold8" parent="GoldGroup" instance=ExtResource( 2 )]
+position = Vector2( 600, 525 )
+
+[node name="Gold9" parent="GoldGroup" instance=ExtResource( 2 )]
+position = Vector2( 680, 525 )
+
+[node name="Gold16" parent="GoldGroup" instance=ExtResource( 2 )]
+position = Vector2( 40, 605 )
+
+[node name="Gold17" parent="GoldGroup" instance=ExtResource( 2 )]
+position = Vector2( 120, 605 )
+
+[node name="Gold48" parent="GoldGroup" instance=ExtResource( 2 )]
+position = Vector2( 40, 440 )
+
+[node name="Gold49" parent="GoldGroup" instance=ExtResource( 2 )]
+position = Vector2( 120, 440 )
+
+[node name="Gold21" parent="GoldGroup" instance=ExtResource( 2 )]
+position = Vector2( 440, 605 )
+
+[node name="Gold22" parent="GoldGroup" instance=ExtResource( 2 )]
+position = Vector2( 520, 605 )
+
+[node name="Gold23" parent="GoldGroup" instance=ExtResource( 2 )]
+position = Vector2( 600, 605 )
+
+[node name="Gold24" parent="GoldGroup" instance=ExtResource( 2 )]
+position = Vector2( 680, 605 )
+
+[node name="Gold25" parent="GoldGroup" instance=ExtResource( 2 )]
+position = Vector2( 760, 605 )
+
+[node name="Gold31" parent="GoldGroup" instance=ExtResource( 2 )]
+position = Vector2( 40, 685 )
+
+[node name="Gold32" parent="GoldGroup" instance=ExtResource( 2 )]
+position = Vector2( 120, 685 )
+
+[node name="Gold33" parent="GoldGroup" instance=ExtResource( 2 )]
+position = Vector2( 200, 685 )
+
+[node name="Gold34" parent="GoldGroup" instance=ExtResource( 2 )]
+position = Vector2( 280, 685 )
+
+[node name="Gold35" parent="GoldGroup" instance=ExtResource( 2 )]
+position = Vector2( 360, 685 )
+
+[node name="Gold36" parent="GoldGroup" instance=ExtResource( 2 )]
+position = Vector2( 440, 685 )
+
+[node name="Gold37" parent="GoldGroup" instance=ExtResource( 2 )]
+position = Vector2( 520, 685 )
+
+[node name="Gold38" parent="GoldGroup" instance=ExtResource( 2 )]
+position = Vector2( 600, 685 )
+
+[node name="Gold39" parent="GoldGroup" instance=ExtResource( 2 )]
+position = Vector2( 680, 685 )
+
+[node name="Gold40" parent="GoldGroup" instance=ExtResource( 2 )]
+position = Vector2( 760, 685 )
+
+[node name="Gold41" parent="GoldGroup" instance=ExtResource( 2 )]
+position = Vector2( 840, 685 )
+
+[node name="Gold42" parent="GoldGroup" instance=ExtResource( 2 )]
+position = Vector2( 920, 685 )
+
+[node name="Gold43" parent="GoldGroup" instance=ExtResource( 2 )]
+position = Vector2( 1000, 685 )
+
+[node name="Gold44" parent="GoldGroup" instance=ExtResource( 2 )]
+position = Vector2( 1080, 685 )
+
+[node name="Gold45" parent="GoldGroup" instance=ExtResource( 2 )]
+position = Vector2( 1160, 685 )
+
+[node name="Gold51" parent="GoldGroup" instance=ExtResource( 2 )]
+position = Vector2( 40, 765 )
+
+[node name="Gold52" parent="GoldGroup" instance=ExtResource( 2 )]
+position = Vector2( 120, 765 )
+
+[node name="Gold53" parent="GoldGroup" instance=ExtResource( 2 )]
+position = Vector2( 200, 765 )
+
+[node name="Gold54" parent="GoldGroup" instance=ExtResource( 2 )]
+position = Vector2( 280, 765 )
+
+[node name="Gold55" parent="GoldGroup" instance=ExtResource( 2 )]
+position = Vector2( 360, 765 )
+
+[node name="Gold56" parent="GoldGroup" instance=ExtResource( 2 )]
+position = Vector2( 440, 765 )
+
+[node name="Gold57" parent="GoldGroup" instance=ExtResource( 2 )]
+position = Vector2( 520, 765 )
+
+[node name="Gold58" parent="GoldGroup" instance=ExtResource( 2 )]
+position = Vector2( 600, 765 )
+
+[node name="Gold59" parent="GoldGroup" instance=ExtResource( 2 )]
+position = Vector2( 680, 765 )
+
+[node name="Gold60" parent="GoldGroup" instance=ExtResource( 2 )]
+position = Vector2( 760, 765 )
+
+[node name="Gold61" parent="GoldGroup" instance=ExtResource( 2 )]
+position = Vector2( 840, 765 )
+
+[node name="Gold62" parent="GoldGroup" instance=ExtResource( 2 )]
+position = Vector2( 920, 765 )
+
+[node name="Gold63" parent="GoldGroup" instance=ExtResource( 2 )]
+position = Vector2( 1000, 765 )
+
+[node name="Gold64" parent="GoldGroup" instance=ExtResource( 2 )]
+position = Vector2( 1080, 765 )
+
+[node name="Gold65" parent="GoldGroup" instance=ExtResource( 2 )]
+position = Vector2( 1160, 765 )
+
+[node name="Gold66" parent="GoldGroup" instance=ExtResource( 2 )]
+position = Vector2( 40, 845 )
+
+[node name="Gold67" parent="GoldGroup" instance=ExtResource( 2 )]
+position = Vector2( 120, 845 )
+
+[node name="Gold68" parent="GoldGroup" instance=ExtResource( 2 )]
+position = Vector2( 200, 845 )
+
+[node name="Gold69" parent="GoldGroup" instance=ExtResource( 2 )]
+position = Vector2( 280, 845 )
+
+[node name="Gold70" parent="GoldGroup" instance=ExtResource( 2 )]
+position = Vector2( 360, 845 )
+
+[node name="Gold71" parent="GoldGroup" instance=ExtResource( 2 )]
+position = Vector2( 440, 845 )
+
+[node name="Gold72" parent="GoldGroup" instance=ExtResource( 2 )]
+position = Vector2( 520, 845 )
+
+[node name="Gold73" parent="GoldGroup" instance=ExtResource( 2 )]
+position = Vector2( 600, 845 )
+
+[node name="Gold74" parent="GoldGroup" instance=ExtResource( 2 )]
+position = Vector2( 680, 845 )
+
+[node name="Gold75" parent="GoldGroup" instance=ExtResource( 2 )]
+position = Vector2( 760, 845 )
+
+[node name="Gold76" parent="GoldGroup" instance=ExtResource( 2 )]
+position = Vector2( 840, 845 )
+
+[node name="Gold77" parent="GoldGroup" instance=ExtResource( 2 )]
+position = Vector2( 920, 845 )
+
+[node name="Gold78" parent="GoldGroup" instance=ExtResource( 2 )]
+position = Vector2( 1000, 845 )
+
+[node name="Gold79" parent="GoldGroup" instance=ExtResource( 2 )]
+position = Vector2( 1080, 845 )
+
+[node name="Gold80" parent="GoldGroup" instance=ExtResource( 2 )]
+position = Vector2( 1160, 845 )
+
+[node name="Gold81" parent="GoldGroup" instance=ExtResource( 2 )]
+position = Vector2( 40, 925 )
+
+[node name="Gold82" parent="GoldGroup" instance=ExtResource( 2 )]
+position = Vector2( 120, 925 )
+
+[node name="Gold83" parent="GoldGroup" instance=ExtResource( 2 )]
+position = Vector2( 200, 925 )
+
+[node name="Gold84" parent="GoldGroup" instance=ExtResource( 2 )]
+position = Vector2( 280, 925 )
+
+[node name="Gold85" parent="GoldGroup" instance=ExtResource( 2 )]
+position = Vector2( 360, 925 )
+
+[node name="Gold86" parent="GoldGroup" instance=ExtResource( 2 )]
+position = Vector2( 440, 925 )
+
+[node name="Gold87" parent="GoldGroup" instance=ExtResource( 2 )]
+position = Vector2( 520, 925 )
+
+[node name="Gold88" parent="GoldGroup" instance=ExtResource( 2 )]
+position = Vector2( 600, 925 )
+
+[node name="Gold89" parent="GoldGroup" instance=ExtResource( 2 )]
+position = Vector2( 680, 925 )
+
+[node name="Gold90" parent="GoldGroup" instance=ExtResource( 2 )]
+position = Vector2( 760, 925 )
+
+[node name="Gold91" parent="GoldGroup" instance=ExtResource( 2 )]
+position = Vector2( 840, 925 )
+
+[node name="Gold92" parent="GoldGroup" instance=ExtResource( 2 )]
+position = Vector2( 920, 925 )
+
+[node name="Gold93" parent="GoldGroup" instance=ExtResource( 2 )]
+position = Vector2( 1000, 925 )
+
+[node name="Gold94" parent="GoldGroup" instance=ExtResource( 2 )]
+position = Vector2( 1080, 925 )
+
+[node name="Gold95" parent="GoldGroup" instance=ExtResource( 2 )]
+position = Vector2( 1160, 925 )
+
+[node name="Gold98" parent="GoldGroup" instance=ExtResource( 2 )]
+position = Vector2( 1400, 525 )
+
+[node name="Gold99" parent="GoldGroup" instance=ExtResource( 2 )]
+position = Vector2( 1480, 525 )
+
+[node name="Gold100" parent="GoldGroup" instance=ExtResource( 2 )]
+position = Vector2( 1560, 525 )
+
+[node name="Gold101" parent="GoldGroup" instance=ExtResource( 2 )]
+position = Vector2( 1640, 525 )
+
+[node name="Gold102" parent="GoldGroup" instance=ExtResource( 2 )]
+position = Vector2( 1720, 525 )
+
+[node name="Gold105" parent="GoldGroup" instance=ExtResource( 2 )]
+position = Vector2( 1960, 525 )
+
+[node name="Gold106" parent="GoldGroup" instance=ExtResource( 2 )]
+position = Vector2( 2040, 525 )
+
+[node name="Gold108" parent="GoldGroup" instance=ExtResource( 2 )]
+position = Vector2( 1320, 605 )
+
+[node name="Gold109" parent="GoldGroup" instance=ExtResource( 2 )]
+position = Vector2( 1400, 605 )
+
+[node name="Gold110" parent="GoldGroup" instance=ExtResource( 2 )]
+position = Vector2( 1480, 605 )
+
+[node name="Gold111" parent="GoldGroup" instance=ExtResource( 2 )]
+position = Vector2( 1560, 605 )
+
+[node name="Gold112" parent="GoldGroup" instance=ExtResource( 2 )]
+position = Vector2( 1640, 605 )
+
+[node name="Gold113" parent="GoldGroup" instance=ExtResource( 2 )]
+position = Vector2( 1720, 605 )
+
+[node name="Gold116" parent="GoldGroup" instance=ExtResource( 2 )]
+position = Vector2( 1960, 605 )
+
+[node name="Gold117" parent="GoldGroup" instance=ExtResource( 2 )]
+position = Vector2( 2040, 605 )
+
+[node name="Gold118" parent="GoldGroup" instance=ExtResource( 2 )]
+position = Vector2( 1240, 685 )
+
+[node name="Gold119" parent="GoldGroup" instance=ExtResource( 2 )]
+position = Vector2( 1320, 685 )
+
+[node name="Gold120" parent="GoldGroup" instance=ExtResource( 2 )]
+position = Vector2( 1400, 685 )
+
+[node name="Gold121" parent="GoldGroup" instance=ExtResource( 2 )]
+position = Vector2( 1480, 685 )
+
+[node name="Gold122" parent="GoldGroup" instance=ExtResource( 2 )]
+position = Vector2( 1560, 685 )
+
+[node name="Gold123" parent="GoldGroup" instance=ExtResource( 2 )]
+position = Vector2( 1640, 685 )
+
+[node name="Gold124" parent="GoldGroup" instance=ExtResource( 2 )]
+position = Vector2( 1720, 685 )
+
+[node name="Gold125" parent="GoldGroup" instance=ExtResource( 2 )]
+position = Vector2( 1800, 685 )
+
+[node name="Gold126" parent="GoldGroup" instance=ExtResource( 2 )]
+position = Vector2( 1880, 685 )
+
+[node name="Gold127" parent="GoldGroup" instance=ExtResource( 2 )]
+position = Vector2( 1960, 685 )
+
+[node name="Gold128" parent="GoldGroup" instance=ExtResource( 2 )]
+position = Vector2( 2040, 685 )
+
+[node name="Gold129" parent="GoldGroup" instance=ExtResource( 2 )]
+position = Vector2( 1240, 765 )
+
+[node name="Gold130" parent="GoldGroup" instance=ExtResource( 2 )]
+position = Vector2( 1320, 765 )
+
+[node name="Gold131" parent="GoldGroup" instance=ExtResource( 2 )]
+position = Vector2( 1400, 765 )
+
+[node name="Gold132" parent="GoldGroup" instance=ExtResource( 2 )]
+position = Vector2( 1480, 765 )
+
+[node name="Gold133" parent="GoldGroup" instance=ExtResource( 2 )]
+position = Vector2( 1560, 765 )
+
+[node name="Gold134" parent="GoldGroup" instance=ExtResource( 2 )]
+position = Vector2( 1640, 765 )
+
+[node name="Gold135" parent="GoldGroup" instance=ExtResource( 2 )]
+position = Vector2( 1720, 765 )
+
+[node name="Gold136" parent="GoldGroup" instance=ExtResource( 2 )]
+position = Vector2( 1800, 765 )
+
+[node name="Gold137" parent="GoldGroup" instance=ExtResource( 2 )]
+position = Vector2( 1880, 765 )
+
+[node name="Gold138" parent="GoldGroup" instance=ExtResource( 2 )]
+position = Vector2( 1960, 765 )
+
+[node name="Gold139" parent="GoldGroup" instance=ExtResource( 2 )]
+position = Vector2( 2040, 765 )
+
+[node name="Gold140" parent="GoldGroup" instance=ExtResource( 2 )]
+position = Vector2( 1240, 845 )
+
+[node name="Gold141" parent="GoldGroup" instance=ExtResource( 2 )]
+position = Vector2( 1320, 845 )
+
+[node name="Gold142" parent="GoldGroup" instance=ExtResource( 2 )]
+position = Vector2( 1400, 845 )
+
+[node name="Gold143" parent="GoldGroup" instance=ExtResource( 2 )]
+position = Vector2( 1480, 845 )
+
+[node name="Gold144" parent="GoldGroup" instance=ExtResource( 2 )]
+position = Vector2( 1560, 845 )
+
+[node name="Gold145" parent="GoldGroup" instance=ExtResource( 2 )]
+position = Vector2( 1640, 845 )
+
+[node name="Gold146" parent="GoldGroup" instance=ExtResource( 2 )]
+position = Vector2( 1720, 845 )
+
+[node name="Gold147" parent="GoldGroup" instance=ExtResource( 2 )]
+position = Vector2( 1800, 845 )
+
+[node name="Gold148" parent="GoldGroup" instance=ExtResource( 2 )]
+position = Vector2( 1880, 845 )
+
+[node name="Gold149" parent="GoldGroup" instance=ExtResource( 2 )]
+position = Vector2( 1960, 845 )
+
+[node name="Gold150" parent="GoldGroup" instance=ExtResource( 2 )]
+position = Vector2( 2040, 845 )
+
+[node name="Gold151" parent="GoldGroup" instance=ExtResource( 2 )]
+position = Vector2( 1240, 925 )
+
+[node name="Gold152" parent="GoldGroup" instance=ExtResource( 2 )]
+position = Vector2( 1320, 925 )
+
+[node name="Gold153" parent="GoldGroup" instance=ExtResource( 2 )]
+position = Vector2( 1400, 925 )
+
+[node name="Gold154" parent="GoldGroup" instance=ExtResource( 2 )]
+position = Vector2( 1480, 925 )
+
+[node name="Gold155" parent="GoldGroup" instance=ExtResource( 2 )]
+position = Vector2( 1560, 925 )
+
+[node name="Gold156" parent="GoldGroup" instance=ExtResource( 2 )]
+position = Vector2( 1640, 925 )
+
+[node name="Gold157" parent="GoldGroup" instance=ExtResource( 2 )]
+position = Vector2( 1720, 925 )
+
+[node name="Gold158" parent="GoldGroup" instance=ExtResource( 2 )]
+position = Vector2( 1800, 925 )
+
+[node name="Gold159" parent="GoldGroup" instance=ExtResource( 2 )]
+position = Vector2( 1880, 925 )
+
+[node name="Gold160" parent="GoldGroup" instance=ExtResource( 2 )]
+position = Vector2( 1960, 925 )
+
+[node name="Gold161" parent="GoldGroup" instance=ExtResource( 2 )]
+position = Vector2( 2040, 925 )
+
+[node name="ColorRect" type="ColorRect" parent="GoldGroup"]
+show_behind_parent = true
+margin_top = 390.0
+margin_right = 2193.0
+margin_bottom = 1040.0
+color = Color( 0.411765, 0.407843, 0.298039, 1 )
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect4" type="ColorRect" parent="GoldGroup"]
+show_behind_parent = true
+margin_left = -720.0
+margin_top = 965.0
+margin_right = 2720.0
+margin_bottom = 1615.0
+color = Color( 0.2454, 0.216, 0.3, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect2" type="ColorRect" parent="GoldGroup"]
+show_behind_parent = true
+margin_left = -1160.0
+margin_top = -520.0
+margin_bottom = 1160.0
+color = Color( 0.321569, 0.254902, 0.352941, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect3" type="ColorRect" parent="GoldGroup"]
+show_behind_parent = true
+margin_left = 2080.0
+margin_top = -480.0
+margin_right = 3240.0
+margin_bottom = 1200.0
+color = Color( 0.321569, 0.254902, 0.352941, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Dragon" parent="." instance=ExtResource( 7 )]
+position = Vector2( 1480, 445 )
+scale = Vector2( 0.8, 0.8 )
+
+[node name="Player" parent="." instance=ExtResource( 1 )]
+position = Vector2( 600, 360 )
+collision_mask = 3
+
+[node name="RayCast2D" type="RayCast2D" parent="Player"]
+position = Vector2( 0, 70 )
+enabled = true
+cast_to = Vector2( 0, 10 )
+collision_mask = 64
+script = ExtResource( 6 )
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+position = Vector2( 120, -160 )
+current = true
+limit_left = -113
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 980, 287.5 )
+scale = Vector2( 0.96672, -1.07733 )
+texture = ExtResource( 9 )
+
+[node name="Sword" parent="." instance=ExtResource( 4 )]
+rotation = -0.0174554
+collision_mask = 9
+[connection signal="lost_sword" from="Player" to="Sword" method="_on_Player_lost_sword"]
+[connection signal="picked_up_sword" from="Sword" to="Player" method="_on_Sword_picked_up_sword"]

@@ -1,0 +1,89 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://sword.gd" type="Script" id=1]
+[ext_resource path="res://knight/sword.png" type="Texture" id=2]
+[ext_resource path="res://godrays.png" type="Texture" id=3]
+[ext_resource path="res://Audio/boing.wav" type="AudioStream" id=4]
+
+[sub_resource type="Animation" id=1]
+resource_name = "godrays"
+length = 4.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("GodRays:rotation_degrees")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, -359.0 ]
+}
+
+[sub_resource type="Animation" id=2]
+resource_name = "spin"
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, 359.0 ]
+}
+
+[sub_resource type="CapsuleShape2D" id=3]
+radius = 10.0284
+height = 115.946
+
+[sub_resource type="CapsuleShape2D" id=4]
+radius = 6.85436
+height = 116.237
+
+[node name="Sword" type="KinematicBody2D"]
+rotation = 6.26573
+collision_layer = 4
+collision_mask = 8
+script = ExtResource( 1 )
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+rotation = 0.0174535
+stream = ExtResource( 4 )
+
+[node name="GodRays" type="Sprite" parent="."]
+self_modulate = Color( 0.917647, 0.964706, 0.772549, 0.0627451 )
+position = Vector2( -1.03476, 1.98224 )
+rotation = 0.952391
+scale = Vector2( 1.4, 1.4 )
+texture = ExtResource( 3 )
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 0.93003, 4.01685 )
+texture = ExtResource( 2 )
+region_rect = Rect2( 160, 240, 80, 80 )
+
+[node name="Godrayanim" type="AnimationPlayer" parent="."]
+autoplay = "godrays"
+anims/godrays = SubResource( 1 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/spin = SubResource( 2 )
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 11
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2( -0.0523636, 2.99954 )
+shape = SubResource( 3 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( -0.0698181, 3.99939 )
+shape = SubResource( 4 )
+[connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]

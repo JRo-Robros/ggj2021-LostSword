@@ -1,0 +1,102 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://Knight.tscn" type="PackedScene" id=1]
+[ext_resource path="res://dialoguesong.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Dragon1.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Knight.gd" type="Script" id=4]
+[ext_resource path="res://Art/scroll.png" type="Texture" id=5]
+[ext_resource path="res://dialogue.gd" type="Script" id=6]
+
+[sub_resource type="DynamicFontData" id=1]
+font_path = "res://Quintessential-Regular.ttf"
+
+[sub_resource type="DynamicFont" id=2]
+size = 14
+font_data = SubResource( 1 )
+
+[sub_resource type="Animation" id=3]
+length = 20.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("TextureRect/RichTextLabel:percent_visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 17.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, 1.0 ]
+}
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource( 6 )
+
+[node name="AudioStreamPlayer" parent="." instance=ExtResource( 2 )]
+
+[node name="Knight" parent="." instance=ExtResource( 1 )]
+position = Vector2( 48, 287 )
+script = ExtResource( 4 )
+
+[node name="Dragon" parent="." instance=ExtResource( 3 )]
+position = Vector2( 916, 495 )
+script = null
+
+[node name="TextureRect" type="TextureRect" parent="."]
+margin_left = 212.0
+margin_top = -2.0
+margin_right = 728.0
+margin_bottom = 626.0
+texture = ExtResource( 5 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button" type="Button" parent="TextureRect"]
+margin_left = 312.0
+margin_top = 521.0
+margin_right = 424.0
+margin_bottom = 579.0
+text = "start battle"
+
+[node name="RichTextLabel" type="RichTextLabel" parent="TextureRect"]
+margin_left = 53.0
+margin_top = 72.0
+margin_right = 462.0
+margin_bottom = 547.0
+custom_fonts/normal_font = SubResource( 2 )
+bbcode_enabled = true
+bbcode_text = "[color=red]Ready yourself for battle, nefarious drake![/color]
+[right][color=green]You as well, you arrogant, tiny, ape… Say, that’s quite the blade you have there![/color][/right]
+[color=red]Ah! So you’ve noticed! Yes, this sword’s a treasure, passed from one generation of warriors to the next in the noble Steele house for generations![/color]
+[right][color=green]Oh, I can see! I don’t know if you can tell by my horde, but I’m a reptile with an eye for value! I dare say, it would be an honor to be felled by such a weapon![/color][/right]
+[color=red]Ha ha! Well then, today’s your lucky day, you swollen lizard![/color]
+[right][color=green]Yes, it would be grave misfortune were something to happen to such a blade.[/color][/right]
+[center][color=black](Ser Holden drops his sword into the dragon's gold horde)[/color][/center]
+[color=red]Curses! The fresh lacquer made its handle slip quick from my grip![/color]
+[right][color=green]Oh, that’s what that was. I just thought you were a wimp.  Maybe you should have brought a shovel, I hear people really like knights with shovels.[/color][/right]
+
+"
+visible_characters = 0
+percent_visible = 0.0
+text = "Ready yourself for battle, nefarious drake!
+You as well, you arrogant, tiny, ape… Say, that’s quite the blade you have there!
+Ah! So you’ve noticed! Yes, this sword’s a treasure, passed from one generation of warriors to the next in the noble Steele house for generations!
+Oh, I can see! I don’t know if you can tell by my horde, but I’m a reptile with an eye for value! I dare say, it would be an honor to be felled by such a weapon!
+Ha ha! Well then, today’s your lucky day, you swollen lizard!
+Yes, it would be grave misfortune were something to happen to such a blade.
+(Ser Holden drops his sword into the dragon's gold horde)
+Curses! The fresh lacquer made its handle slip quick from my grip!
+Oh, that’s what that was. I just thought you were a wimp.  Maybe you should have brought a shovel, I hear people really like knights with shovels.
+
+"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="textscroll" type="AnimationPlayer" parent="."]
+anims/scroll = SubResource( 3 )
+[connection signal="button_down" from="TextureRect/Button" to="." method="_on_Button_button_down"]
+[connection signal="pressed" from="TextureRect/Button" to="." method="_on_Button_pressed"]
+[connection signal="animation_finished" from="textscroll" to="." method="_on_textscroll_animation_finished"]

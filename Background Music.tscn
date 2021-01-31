@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Audio/Sword_Soundtrack_Peligre.wav" type="AudioStream" id=1]
+
+[node name="Background Music" type="AudioStreamPlayer"]
+stream = ExtResource( 1 )
+volume_db = -6.0
+autoplay = true
